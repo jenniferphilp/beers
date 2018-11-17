@@ -4,11 +4,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Weather</title>
+        <title>Beaus</title>
         <link rel="stylesheet" href="styles.css">
-
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="crossorigin="anonymous"></script>
-       
         <script src="client.js"></script>  
         
         <!-- Latest compiled and minified CSS -->
@@ -19,45 +19,43 @@
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+        <!-- Google Maps API url -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMLJRn2F2XaLUiPwi1VCBXr8k6QBg7trs"></script>
     </head>
 <body>
+        <!-- async defer -->
 
-
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <h1>Beaus</h1>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1 class="main-heading">Beau's Seasonal Beers</h1>
+            </div>  
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
+    </nav>  
+    <div class="container-fluid">    
+        <div class="row content">
+            <div class="col-sm-11 col-sm-offset-1"> 
+                <h2 class="sub-heading">Click each image to learn more</h2> 
+            </div>
+            <div class="col-sm-12 result-container"></div>
+        </div>
+    </div>                
+    <div id="storesModal" class="modal fade">
+        <div class="modal-dialog">
+            <!-- Modal content for store listing-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Click each location for map:</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
-</nav>  
-<div class="container-fluid text-center">    
-    <div class="row content">
-        <div class="col-sm-2 sidenav">
-        </div>
-        <div class="col-sm-8 text-left"> 
-            <h1>Welcome</h1> 
-        </div>
-        <div class="col-md-12 result-container"></div>
-        <div>
-    </div>
-</div>                
-
-
- 
-
-
 </body>
 
 </html> 
