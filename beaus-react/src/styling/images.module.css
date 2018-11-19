@@ -1,8 +1,16 @@
-.hideImage{
-    opacity: 0;
+.hideImage {
+    opacity: 0.1;
     transition: opacity 1s;
 }
 
+.showImage {
+    opacity: 1;
+    transition: opacity 1s; 
+}
+
+.staticLogo {
+    width: 100%;
+}
 
 
 

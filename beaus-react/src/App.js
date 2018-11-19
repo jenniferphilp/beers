@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import _ from 'lodash';
+
 import BeerContainer from './BeerContainer'
 
-import styles from './styling/container.module.css'
+import styles from './styling/app.module.css'
 
 class App extends Component {
   //where is the best place to make an API call in a Reac† application
@@ -11,7 +12,8 @@ class App extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      beers: []
+      beers: [],
+      indexOfSelected: null
     };
   }
 
@@ -52,21 +54,37 @@ class App extends Component {
       )
   }
 
-  renderBeers = () => {
-	const { beers } = this.state; 
+  getDataFromChild = (index) => {
+    this.setState({
+      indexOfSelected: index
+    })
+  }
+
+  showBeerText = (index) => {
+    if (index === this.state.indexOfSelected){
+      return true;
+    }
+  }
+
+renderBeers = () => {
+  const { beers } = this.state; 
 
 	const beerContainer = beers.map((beer) => 
 		<BeerContainer 
-			key={beer.id} 
+      key={beer.id} 
+      index={beer.id}
 			src={beer.image_thumb_url} 
 			alt={beer.name}
 			name={beer.name}
 			style={beer.style}
 			tertiary_category={beer.tertiary_category}
 			tasting_note={beer.tasting_note}
-			alcohol_content={beer.alcohol_content}
+      alcohol_content={beer.alcohol_content}
+      passDataToParent={this.getDataFromChild}
+      showBeerText={this.showBeerText(beer.id)}
 			/>	
-	)
+  )
+
 	return beerContainer;
   }
 

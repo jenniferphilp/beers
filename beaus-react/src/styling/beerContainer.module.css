@@ -1,0 +1,18 @@
+.beerContainer {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .beerContainer{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .beerContainer{
+        width: 100%;
+    }
+}
+

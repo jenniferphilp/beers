@@ -5,24 +5,20 @@ import styles from './styling/text.module.css'
 
 class BeerText extends Component {
 
-  constructor(props){
-  super(props)
+  // componentDidMount = () => {
+  //   this.props.passDataToParent(this.props.textIsVisible);
+  // }
 
-
-  }
- 
-
-  //if textIsVisible true, add class that positions absolutely over the image below
   render() {
-    const { name, style, tertiary_category, tasting_note, alcohol_content, textIsVisible } = this.props;
-    
-    
+    const { name, index, style, tertiary_category, tasting_note, alcohol_content } = this.props;
+
     return (
         <div className={styles.textContainer}>
             <h4>{name}</h4>
             <p>{style}</p>
+            <p>{index}</p>
             <p>{tertiary_category}</p>
-            <p>{tasting_note}</p>
+            <p className={styles.description}>{tasting_note}</p>
             <p>Alcohol Content: {alcohol_content/100}%</p>
             <button type="button" className="">Click for locations</button> 
         </div>
