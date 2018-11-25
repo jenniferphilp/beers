@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import _ from 'lodash';
 
 import BeerContainer from './BeerContainer'
+import Header from './Header';
 
 import styles from './styling/app.module.css'
 
@@ -93,9 +94,12 @@ renderBeers = () => {
 
   render() {
     return (
-      <div className={styles.mainContainer}>
-         {this.renderBeers() }
-      </div>
+      <Fragment>
+        <Header/>
+          <div className={styles.mainBeerContainer}>
+            {this.renderBeers() }
+          </div>
+      </Fragment>
     );
   }
 }
