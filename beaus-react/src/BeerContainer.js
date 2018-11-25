@@ -15,29 +15,42 @@ class BeerContainer extends Component {
     this.state = { 
       textIsVisible: false,
     }
-
   }
 
-  showInfo = (e) => {
+  componentDidUpdate = (prevProps) => {
+    //if a beer is selected, state.text changes from false to true
+    //it will remain in the true state unless it is selected again (only toggling changes state)
+    //but ... we are forcing the false state by only showing one beer at a time (logic in App.js)
+    //need a conditional to set textIsVisible to false if beerIsSelected changes from true to false        
+    if (prevProps.beerIsSelected && !this.props.beerIsSelected) {
+            this.setState({
+            textIsVisible: false
+          })
+    }
+  }  
+
+  toggleText = (e) => {
     e.preventDefault();
+
+    this.setState({
+      textIsVisible: !this.state.textIsVisible
+    })
+
     this.props.passDataToParent(this.props.index);  
   }
  
   renderBeerText = () => {
-    const { showBeerText } = this.props;
-
-    if (showBeerText){
+    if (this.props.beerIsSelected && this.state.textIsVisible){
       return <BeerText {...this.props}  />
     }
   }
 
   render() {
-   
     return (
       <div className={styles.beerContainer}>
         { this.renderBeerText() }
-        <button className="" onClick={(e) => this.showInfo(e)}>
-          <BeerImage {...this.props} textIsVisible={this.props.showBeerText} />
+        <button className="" onClick={(e) => this.toggleText(e)}>
+          <BeerImage {...this.props} textIsVisible={this.props.beerIsSelected && this.state.textIsVisible} />
         </button>
       </div>
     );

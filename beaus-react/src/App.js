@@ -33,10 +33,10 @@ class App extends Component {
 
     fetch(url, {
       headers: { 'Authorization': 'Token ' + access_key } })
-      .then(res => res.json())
+      .then(res => res.json() )
       .then(
-        (result) => {
-		  const beers = result.result
+        (data) => {
+          const { result: beers } = data; 
           this.setState({
             isLoaded: true,
             beers: beers
@@ -60,9 +60,12 @@ class App extends Component {
     })
   }
 
-  showBeerText = (index) => {
+  beerIsSelected = (index) => {
     if (index === this.state.indexOfSelected){
       return true;
+    } 
+    else {
+      return false;
     }
   }
 
@@ -81,7 +84,7 @@ renderBeers = () => {
 			tasting_note={beer.tasting_note}
       alcohol_content={beer.alcohol_content}
       passDataToParent={this.getDataFromChild}
-      showBeerText={this.showBeerText(beer.id)}
+      beerIsSelected={this.beerIsSelected(beer.id)}
 			/>	
   )
 
